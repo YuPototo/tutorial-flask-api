@@ -13,12 +13,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False # 关掉 flask-sqlalchemy �
 app.config['SECRET_KEY'] = 'super-secret'
 api = Api(app)
 
-
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
-
 jwt = JWT(app, authenticate, identity)
 
 api.add_resource(Store, '/store/<string:name>')
